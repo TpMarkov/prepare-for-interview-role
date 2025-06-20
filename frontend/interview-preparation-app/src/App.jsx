@@ -10,13 +10,28 @@ import InterviewPrep from "./pages/InterviewPrep/InterviewPrep";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<InterviewPrep />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signup" element={<SignUp></SignUp>}></Route>
-      </Routes>
-    </Router>
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />}></Route>
+          <Route
+            path="/interview-prep/:sessionId"
+            element={<InterviewPrep></InterviewPrep>}
+          ></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<SignUp></SignUp>}></Route>
+          <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
+        </Routes>
+      </Router>
+      <Toaster
+        toastOptions={{
+          className: "",
+          style: {
+            fontSize: "13px",
+          },
+        }}
+      ></Toaster>
+    </div>
   );
 }
 
