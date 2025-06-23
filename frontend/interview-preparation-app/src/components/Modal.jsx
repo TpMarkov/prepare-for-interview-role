@@ -1,6 +1,8 @@
 import React from "react";
 
 function Modal({ children, isOpen, onClose, title, hideHeader }) {
+  if (!isOpen) return null;
+
   return (
     <div className="fixed inset-0 z-50 flex justify-center w-full h-full items-center bg-black/40">
       {/* Modal contetnt */}
@@ -20,7 +22,6 @@ function Modal({ children, isOpen, onClose, title, hideHeader }) {
           className="text-gray-400 bg-transparent hover:bg-orange-100 hover:text-gray-900 rounded-lg text-sm w-8 h-8 justify-center items-center absolute top-3.5 right-3.5 cursor-pointer"
           onClick={onClose}
         >
-          Login
           <svg
             className="w-3 h-3"
             aria-hidden="true"

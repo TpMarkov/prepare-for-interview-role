@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Input from "../../components/Inputs/Input";
 
 function Login({ setCurrentPage }) {
   const [email, setEmail] = useState("");
@@ -20,7 +21,38 @@ function Login({ setCurrentPage }) {
         Please enter your details to log in{" "}
       </p>
 
-      <form onSubmit={handleLogin}></form>
+      <form onSubmit={handleLogin}>
+        <Input
+          value={email}
+          onChange={(target) => setEmail(target.value)}
+          label="Email Address"
+          placeholder="john@example.com"
+          type="text"
+        />
+
+        <Input
+          value={password}
+          onChange={(target) => setPassword(target.value)}
+          label="Password"
+          placeholder="Min 8 Characters"
+          type="password"
+        />
+
+        {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
+
+        <button className="btn-primary" type="submit">
+          LOGIN
+        </button>
+        <p className="text-[13px] text-slate-800 mt-3">
+          Don't have account?
+          <button
+            className="font-medium font-semibold text-primary underline cursor-pointer pl-1"
+            onClick={() => setCurrentPage("signup")}
+          >
+            SingUP{" "}
+          </button>
+        </p>
+      </form>
     </div>
   );
 }
