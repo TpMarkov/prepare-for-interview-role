@@ -24,7 +24,7 @@ function Login({ setCurrentPage }) {
       <form onSubmit={handleLogin}>
         <Input
           value={email}
-          onChange={(target) => setEmail(target.value)}
+          onChange={({ target }) => setEmail(target.value)}
           label="Email Address"
           placeholder="john@example.com"
           type="text"
@@ -32,7 +32,7 @@ function Login({ setCurrentPage }) {
 
         <Input
           value={password}
-          onChange={(target) => setPassword(target.value)}
+          onChange={({ target }) => setPassword(target.value)}
           label="Password"
           placeholder="Min 8 Characters"
           type="password"
