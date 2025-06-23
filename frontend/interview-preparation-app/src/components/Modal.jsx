@@ -19,7 +19,7 @@ function Modal({ children, isOpen, onClose, title, hideHeader }) {
 
         <button
           type="button"
-          className="text-gray-400 bg-transparent hover:bg-orange-100 hover:text-gray-900 rounded-lg text-sm w-8 h-8 justify-center items-center absolute top-3.5 right-3.5 cursor-pointer"
+          className="text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 justify-center items-center absolute top-3.5 right-3.5 cursor-pointer"
           onClick={onClose}
         >
           <svg
