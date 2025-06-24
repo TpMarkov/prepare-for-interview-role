@@ -35,8 +35,8 @@ function SignUp({ setCurrentPage }) {
         <div className="grid grid-cols-1 md:grid-cols-1 gap-2">
           <Input
             value={fullName}
-            label="John"
-            placeholder="John"
+            label="Full Name"
+            placeholder="John Doe"
             onChange={({ target }) => setFullName(target.value)}
             type="text"
           />
