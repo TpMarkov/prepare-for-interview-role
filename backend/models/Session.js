@@ -8,7 +8,7 @@ const sessionSchema = new mongoose.Schema(
     experience: { type: String, required: true },
     topicsToFocus: { type: String, required: true },
     descripton: String,
-    question: { type: mongoose.Types.ObjectId, ref: "Question" },
+    question: [{ type: mongoose.Types.ObjectId, ref: "Question" }],
   },
   { timestamps: true }
 );
