@@ -6,9 +6,9 @@ const cors = require("cors");
 const path = require("path");
 
 const connectDB = require("./config/db");
-const authRoutes = require("./routes/authRoutes.js");
-const sessionsRoutes = require("./routes/questionRoutes.js");
-const questionRoutes = require("./routes/questionRoutes.js");
+const authRoutes = require("./routes/authRoutes");
+const sessionsRoutes = require("./routes/questionRoutes");
+const questionRoutes = require("./routes/questionRoutes");
 
 const app = express();
 
