@@ -9,6 +9,7 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const sessionsRoutes = require("./routes/questionRoutes");
 const questionRoutes = require("./routes/questionRoutes");
+const upload = require("./middlewares/uploadMiddleware");
 
 const app = express();
 
