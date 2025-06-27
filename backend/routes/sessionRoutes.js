@@ -6,7 +6,7 @@ const {
   deleteSession,
 } = require("../controllers/sessionController");
 
-const protect = require("../middlewares/authMiddleware");
+const { protect } = require("../middlewares/authMiddleware");
 const router = express.Router();
 
 router.post("/create", protect, createSession);

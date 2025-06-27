@@ -7,7 +7,7 @@ const path = require("path");
 
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
-const sessionRoutes = require("./routes/questionRoutes");
+const sessionRoutes = require("./routes/sessionRoutes");
 const questionRoutes = require("./routes/questionRoutes");
 const upload = require("./middlewares/uploadMiddleware");
 
