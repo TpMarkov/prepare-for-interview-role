@@ -3,7 +3,6 @@ const Question = require("../models/Question");
 //  @desc Create a new session and linked questions
 //  @route POST /api/sessions/create
 //  @Private
-
 exports.createSession = async (req, res) => {
   try {
     const { role, experience, topicsToFocus, description, questions } =
@@ -73,14 +72,15 @@ exports.getSessionById = async (req, res) => {
   }
 };
 
+//  @description delete own sessions
+//  @route DELETE /api/sessions/:id
+//  @access Private
 exports.deleteSession = async (req, res) => {
   try {
     const session = await Session.findById(req.params.id);
 
     if (!session) {
-      return res
-        .status(404)
-        .json({ success: false, message: "Session not found." });
+      return res.status(404).json({ message: "Session not found." });
     }
     //  Check if sellected session is created by the loged in user
 
@@ -100,6 +100,6 @@ exports.deleteSession = async (req, res) => {
 
     res.status(200).json({ success: true, message: "Session deleted." });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Server error" });
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };
