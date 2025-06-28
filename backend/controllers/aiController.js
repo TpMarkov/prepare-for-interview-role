@@ -1,10 +1,12 @@
-const { GoogleGenAI } = require("@google/genai");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const {
   questionAnswerPrompt,
   conceptExplainPrompt,
 } = require("../utils/prompts");
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const ai = new GoogleGenerativeAI({
+  apiKey: "AIzaSyBR55wiqMILhxHsGhYoTu0Uhow6tFTkROc",
+});
 
 //  @desc Generate interview questions/answers using GEMINI
 //  @route POST /api/ai/generate-questions
@@ -24,24 +26,22 @@ const generateInterviewQuestions = async (req, res) => {
       numberOfQuestions
     );
 
-    const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash-lite",
-      content: prompt,
-    });
+    const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    let rawText = response.text;
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const rawText = await response.text();
 
-    //  Clearn it: Remove ```json and``` from beggining and end
     const cleanedText = rawText
-      .replace(/^```json\s*/, "") // remove starting ```json
-      .replace(/```$/, "") // removes ending ```
-      .trim(); // removes extra spacing
+      .replace(/^```json\s*/, "")
+      .replace(/```$/, "")
+      .trim();
 
-    //  Now safe to parse
     const data = JSON.parse(cleanedText);
 
     res.status(200).json(data);
   } catch (error) {
+    console.error("Error generating interview questions:", error);
     res.status(500).json({
       message: "Failed to generate Questions.",
       error: error.message,

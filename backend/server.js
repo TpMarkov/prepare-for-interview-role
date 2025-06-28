@@ -14,6 +14,7 @@ const {
   generateConceptExplanation,
 } = require("./controllers/aiController");
 const upload = require("./middlewares/uploadMiddleware");
+const { protect } = require("./middlewares/authMiddleware");
 
 const app = express();
 
