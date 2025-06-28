@@ -55,23 +55,50 @@ exports.getMySessions = async (req, res) => {
 
 exports.getSessionById = async (req, res) => {
   try {
-    const session = await Session.findById(req.params.id)
-      .populate({
-        path: "questions",
-        options: { sort: { isPinned: -1, createdAt: 1 } },
-      })
-      .exec();
+    const session = await Session.findById(req.params.id).populate({
+      path: "questions",
+      options: { sort: { isPinned: -1, createdAt: 1 } },
+    });
 
     if (!session) {
-      res.status(404).json({ success: false, message: "Session not found." });
+      return res
+        .status(404)
+        .json({ success: false, message: "Session not found." });
     }
 
     res.status(200).json({ success: true, session });
-  } catch (error) {}
+  } catch (error) {
+    console.error("Error getting session by ID:", error);
+    res.status(500).json({ success: false, message: "Server error." });
+  }
 };
 
 exports.deleteSession = async (req, res) => {
   try {
+    const session = await Session.findById(req.params.id);
+
+    if (!session) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Session not found." });
+    }
+    //  Check if sellected session is created by the loged in user
+
+    if (session.user.toString() !== req.user.id) {
+      return res.status(401).json({
+        success: false,
+        message: "Not authorized to delete this session.",
+      });
+    }
+
+    //  First delete all sessions to this session
+    await Question.deleteMany({ session: session._id });
+
+    //  Then delete the session
+
+    await session.deleteOne();
+
+    res.status(200).json({ success: true, message: "Session deleted." });
   } catch (error) {
     res.status(500).json({ success: false, message: "Server error" });
   }
