@@ -1,6 +1,5 @@
 const Session = require("../models/Session");
 const Question = require("../models/Question");
-
 //  @desc Create a new session and linked questions
 //  @route POST /api/sessions/create
 //  @Private
@@ -56,6 +55,18 @@ exports.getMySessions = async (req, res) => {
 
 exports.getSessionById = async (req, res) => {
   try {
+    const session = await Session.findById(req.params.id)
+      .populate({
+        path: "questions",
+        options: { sort: { isPinned: -1, createdAt: 1 } },
+      })
+      .exec();
+
+    if (!session) {
+      res.status(404).json({ success: false, message: "Session not found." });
+    }
+
+    res.status(200).json({ success: true, session });
   } catch (error) {}
 };
 
