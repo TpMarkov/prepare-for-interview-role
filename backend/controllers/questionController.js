@@ -4,7 +4,6 @@ const Session = require("../models/Session");
 //  @Add additional questions to an existing session
 //  @routes POST /api/questions/add
 //  @access Private
-
 exports.addQuestionsToSession = async (req, res) => {
   try {
     const { sessionId, questions } = req.body;

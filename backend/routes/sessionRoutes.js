@@ -4,6 +4,8 @@ const {
   getSessionById,
   getMySessions,
   deleteSession,
+  generateInterviewGenerate,
+  generateConceptExplanation,
 } = require("../controllers/sessionController");
 
 const { protect } = require("../middlewares/authMiddleware");
