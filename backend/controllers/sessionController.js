@@ -38,6 +38,9 @@ exports.createSession = async (req, res) => {
   }
 };
 
+//  @description Get all my sessions
+//  @route GET /api/sessions/my-sessions
+//  @access Private
 exports.getMySessions = async (req, res) => {
   try {
     const sessions = await Session.find({ user: req.user.id })
@@ -52,6 +55,9 @@ exports.getMySessions = async (req, res) => {
   }
 };
 
+//  @description GET session by ID
+//  @route GET /api/sessions/:id
+//  @access Private
 exports.getSessionById = async (req, res) => {
   try {
     const session = await Session.findById(req.params.id).populate({
@@ -72,7 +78,7 @@ exports.getSessionById = async (req, res) => {
   }
 };
 
-//  @description delete own sessions
+//  @description delete own session
 //  @route DELETE /api/sessions/:id
 //  @access Private
 exports.deleteSession = async (req, res) => {
@@ -82,8 +88,8 @@ exports.deleteSession = async (req, res) => {
     if (!session) {
       return res.status(404).json({ message: "Session not found." });
     }
-    //  Check if sellected session is created by the loged in user
 
+    //  Check if sellected session is created by the loged in user
     if (session.user.toString() !== req.user.id) {
       return res.status(401).json({
         success: false,
@@ -95,7 +101,6 @@ exports.deleteSession = async (req, res) => {
     await Question.deleteMany({ session: session._id });
 
     //  Then delete the session
-
     await session.deleteOne();
 
     res.status(200).json({ success: true, message: "Session deleted." });
