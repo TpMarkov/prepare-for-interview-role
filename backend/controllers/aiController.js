@@ -4,9 +4,9 @@ const {
   conceptExplainPrompt,
 } = require("../utils/prompts");
 
-const ai = new GoogleGenerativeAI({
-  apiKey: "AIzaSyBR55wiqMILhxHsGhYoTu0Uhow6tFTkROc",
-});
+require("dotenv").config();
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 //  @desc Generate interview questions/answers using GEMINI
 //  @route POST /api/ai/generate-questions
@@ -26,7 +26,8 @@ const generateInterviewQuestions = async (req, res) => {
       numberOfQuestions
     );
 
-    const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
+    // const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
@@ -37,7 +38,10 @@ const generateInterviewQuestions = async (req, res) => {
       .replace(/```$/, "")
       .trim();
 
-    const data = JSON.parse(cleanedText);
+    const arrayMatch = cleanedText.match(/\[\s*{[\s\S]*}\s*\]/);
+    if (!arrayMatch) throw new Error("No valid JSON array found.");
+
+    const data = JSON.parse(arrayMatch[0]);
 
     res.status(200).json(data);
   } catch (error) {
