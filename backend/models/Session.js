@@ -6,8 +6,8 @@ const sessionSchema = new mongoose.Schema(
     user: { type: mongoose.Types.ObjectId, ref: "User" },
     role: { type: String, required: true },
     experience: { type: String, required: true },
+    description: { type: String },
     topicsToFocus: { type: String, required: true },
-    descripton: String,
     questions: [{ type: mongoose.Types.ObjectId, ref: "Question" }],
   },
   { timestamps: true }
