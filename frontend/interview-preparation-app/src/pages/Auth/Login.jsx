@@ -7,6 +7,7 @@ import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { useContext } from "react";
 import UserProvider, { UserContext } from "../../Context/userContext";
+import { useEffect } from "react";
 
 function Login({ setCurrentPage }) {
   const [email, setEmail] = useState("");
@@ -15,6 +16,9 @@ function Login({ setCurrentPage }) {
   const { updateUser } = useContext(UserContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+  }, []);
   //  Handle Login Form Submit
   const handleLogin = async (e) => {
     e.preventDefault();
