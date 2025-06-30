@@ -31,13 +31,10 @@ function Login({ setCurrentPage }) {
 
     // Login API Call
     try {
-      const response = await axiosInstance.post(
-        `${BASE_URL}${API_PATHS.AUTH.LOGIN}`,
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+        email,
+        password,
+      });
 
       const { token } = response.data;
 
