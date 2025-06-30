@@ -5,6 +5,7 @@ import Input from "../../components/Inputs/Input";
 import { validateEmail } from "../../utils/helper";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
+import { BASE_URL } from "../../utils/apiPaths";
 
 function Login({ setCurrentPage }) {
   const [email, setEmail] = useState("");
@@ -30,10 +31,13 @@ function Login({ setCurrentPage }) {
 
     // Login API Call
     try {
-      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
-        email,
-        password,
-      });
+      const response = await axiosInstance.post(
+        `${BASE_URL}${API_PATHS.AUTH.LOGIN}`,
+        {
+          email,
+          password,
+        }
+      );
 
       const { token } = response.data;
 
