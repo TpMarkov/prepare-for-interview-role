@@ -15,7 +15,6 @@ function SignUp({ setCurrentPage }) {
   const navigate = useNavigate();
 
   // Handle Sign up form submit
-
   const handleSignUp = async (e) => {
     e.preventDefault();
 

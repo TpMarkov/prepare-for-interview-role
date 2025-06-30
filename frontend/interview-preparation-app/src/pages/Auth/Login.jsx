@@ -1,16 +1,18 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
 import Input from "../../components/Inputs/Input";
 import { validateEmail } from "../../utils/helper";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
-import { BASE_URL } from "../../utils/apiPaths";
+import { useContext } from "react";
+import UserProvider, { UserContext } from "../../Context/userContext";
 
 function Login({ setCurrentPage }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const { updateUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   //  Handle Login Form Submit
@@ -37,6 +39,7 @@ function Login({ setCurrentPage }) {
       });
 
       const { token } = response.data;
+      updateUser(response.data);
 
       if (token) {
         localStorage.setItem("token", token);
