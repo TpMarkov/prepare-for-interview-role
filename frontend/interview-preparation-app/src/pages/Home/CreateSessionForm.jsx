@@ -48,7 +48,7 @@ const CreateSessionForm = () => {
         Fill out a few quick details and unlock your personalized set of
         interview questions!
       </p>
-      <form className="flex flex-col gap-3" onwbmit={handleCreateSession}>
+      <form className="flex flex-col gap-3" onSubmit={handleCreateSession}>
         <Input
           value={formData.role}
           onChange={({ target }) => handleChange("role", target.value)}
