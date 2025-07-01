@@ -57,8 +57,12 @@ const CreateSessionForm = () => {
       }
     } catch (error) {
       if (error.response && error.response.data.message) {
-        setError(error);
+        setError(error.response.data.message);
+      } else {
+        setError("Something went wrong. Please try again later.");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -85,7 +89,7 @@ const CreateSessionForm = () => {
           onChange={({ target }) => handleChange("experience", target.value)}
           label="Years Of Experience"
           type="text"
-          placeholder="(e.g., 1 year, 3 yearss, 5+ yearss)"
+          placeholder="(e.g., 1 year, 3 years, 5+ years)"
         />
 
         <Input
