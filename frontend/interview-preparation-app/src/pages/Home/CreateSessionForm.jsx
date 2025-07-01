@@ -14,7 +14,7 @@ const CreateSessionForm = () => {
     description: "",
   });
 
-  const [isLoading, serIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
@@ -26,17 +26,40 @@ const CreateSessionForm = () => {
   const handleCreateSession = async (e) => {
     e.preventDefault();
 
-    const { role, experience, topicsToFocus, description } = formData;
+    setIsLoading(true);
+    try {
+      const { role, experience, topicsToFocus, description } = formData;
 
-    if (!role || !experience || !topicsToFocus || !description) {
-      setError("Please fill all the required fields.");
-      return;
+      if (!role || !experience || !topicsToFocus || !description) {
+        setError("Please fill all the required fields.");
+        return;
+      }
+      const aiResponse = await axiosInstance.post(
+        API_PATHS.AI.GENERATE_QUESTIONS,
+        {
+          role,
+          experience,
+          topicsToFocus,
+          numberOfQuestions: 10,
+        }
+      );
+
+      const generatedQuestions = aiResponse.data;
+
+      const response = await axiosInstance.post(API_PATHS.SESSION.CREATE, {
+        ...formData,
+        questions: generatedQuestions,
+      });
+
+      if (response.data?.session?._id) {
+        navigate(`/interview-prep/${response.data?.session?._id}`);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error);
+      }
     }
-
-    // const response = await axiosInstance.post(
-    //   API_PATHS.SESSION.CREATE,
-    //   formData
-    // );
   };
 
   return (
@@ -88,7 +111,7 @@ const CreateSessionForm = () => {
           className="btn-primary w-full mt-2"
           disabled={isLoading}
         >
-          {!isLoading && <Loader />} Create Session
+          {isLoading && <Loader />} Create Session
         </button>
       </form>
     </div>
