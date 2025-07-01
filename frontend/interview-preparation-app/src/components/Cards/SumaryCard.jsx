@@ -46,7 +46,7 @@ const SumaryCard = ({
             onDelete();
           }}
         >
-          <LuTrash2 />
+          <LuTrash2 className="hover:cursor-pointer" />
         </button>
       </div>
 
