@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { LuChevronDown, LuPin, LuPinOff, LuSparkles } from "react-icons/lu";
+import AIResponsePreview from "./AIResponsePreview";
 
 const QuestionCard = ({
   question,
@@ -12,64 +13,67 @@ const QuestionCard = ({
   const [height, setHeight] = useState(0);
   const contentRef = useRef(null);
 
+  // Update height dynamically when answer is expanded
   useEffect(() => {
     if (isExpanded) {
-      const contentHeight = contentRef.current.scrollHeight;
-      setHeight(contentHeight + 10);
+      setHeight(contentRef.current.scrollHeight + 10);
     } else {
       setHeight(0);
     }
   }, [isExpanded]);
 
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
+  const toggleExpand = () => setIsExpanded((prev) => !prev);
 
   return (
-    <div className="bg-white rounded-lg mb-4 overflow-hidden py-4 px-5 shadow-xl shadow-gray-100/70 border border-gray-100/60 group">
+    <div className="bg-white rounded-xl mb-4 overflow-hidden py-4 px-5 shadow-md border border-gray-200 group transition-all duration-300">
+      {/* Header */}
       <div className="flex items-start justify-between cursor-pointer">
         <div className="flex items-start gap-3.5">
-          <span className="text-xs md:text-[15px] font-semibold text-gray-400 leading-[18px]">
-            Q
-          </span>
+          <span className="text-sm font-semibold text-gray-400">Q</span>
           <h3
-            className="text-xs md:text-[14px] font-medium text-gray-800 mr-0 md:mr-20"
+            className="text-sm md:text-base font-medium text-gray-800 mr-0 md:mr-20 transition-colors duration-200"
             onClick={toggleExpand}
           >
             {question}
           </h3>
         </div>
 
-        <div className="flex items-center justify-end ml-4 relative">
+        {/* Action Buttons */}
+        <div className="flex items-center justify-end ml-4 relative space-x-2">
           <div
-            className={`flex ${
+            className={`flex gap-2 transition-opacity duration-200 ${
               isExpanded ? "md:flex" : "md:hidden group-hover:flex"
             }`}
           >
             <button
-              className="flex items-center gap-2 text-xs text-indigo-800 font-medium bg-indigo-50 px-3 py-1 mr-2 rounded text-nowrap border border-indigo-50 hover:border-indigo-200 cursor-pointer"
+              className="flex items-center gap-1 text-xs text-indigo-800 font-medium bg-indigo-50 px-3 py-1 rounded border border-indigo-50 hover:border-indigo-200"
               onClick={onTogglePin}
+              title={isPinned ? "Unpin" : "Pin"}
             >
-              {isPinned ? (
-                <LuPinOff className="text-xs" />
-              ) : (
-                <LuPin className="text-xs" />
-              )}
+              {isPinned ? <LuPinOff size={14} /> : <LuPin size={14} />}
+              <span className="hidden md:inline">
+                {isPinned ? "Unpin" : "Pin"}
+              </span>
             </button>
 
             <button
-              className="flex items-center gap-2 text-xs text-cyan-800 font-medium bg-cyan-50 px-3 py-1 mr-2 rounded text-nowrap border border-cyan-50 hover:border-cyan-200 cursor-pointer"
+              className="flex items-center gap-1 text-xs text-cyan-800 font-medium bg-cyan-50 px-3 py-1 rounded border border-cyan-50 hover:border-cyan-200"
               onClick={() => {
                 setIsExpanded(true);
-                onLearnMore();
+                onLearnMore?.();
               }}
+              title="Learn more"
             >
-              <LuSparkles />
-              <span className="">Learn More</span>
+              <LuSparkles size={14} />
+              <span className="hidden md:inline">Learn More</span>
             </button>
           </div>
 
-          <button className="" onClick={toggleExpand}>
+          <button
+            className="transition-transform"
+            onClick={toggleExpand}
+            title={isExpanded ? "Collapse" : "Expand"}
+          >
             <LuChevronDown
               size={20}
               className={`transform transition-transform duration-300 ${
@@ -80,16 +84,16 @@ const QuestionCard = ({
         </div>
       </div>
 
+      {/* Expandable Answer */}
       <div
-        className=""
         style={{
           maxHeight: `${height}px`,
           overflow: "hidden",
           transition: "max-height 0.3s ease",
         }}
       >
-        <div ref={contentRef} className="">
-          <p className="">{answer}</p>
+        <div ref={contentRef} className="mt-3 bg-gray-50 rounded-lg px-3 py-2">
+          <AIResponsePreview content={answer} />
         </div>
       </div>
     </div>
