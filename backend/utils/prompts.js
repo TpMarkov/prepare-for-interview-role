@@ -13,7 +13,6 @@ const questionAnswerPrompt = (
     - Focus Topics: ${topicsToFocus}
     - Write ${numberOfQuestions} interview questions.
     - For each question, generate a detailed but beginner-friendly answer.
-    - Keep the answer clean and as short as possible.
     - If the answer needs a code example, add a small code block inside.
     - Keep formatting very clean.
     - Return a pure JSON array like:
@@ -35,7 +34,6 @@ const conceptExplainPrompt = (question) => `
     - Question: "${question}"
     - After the explanation, provide a short clear title that summarizes the concept for the article or page header.
     - If the explanation includes a code example, provide a small code block.
-    - Keep the answer as short and clean as possible and beginner-friedly.
     - Keep the formatting very clean and clear.
     - Return the result as a valid JSON object in the following format:
 
