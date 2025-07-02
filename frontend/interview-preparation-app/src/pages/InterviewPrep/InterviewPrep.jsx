@@ -10,8 +10,8 @@ import RoleInfoHeader from "./components/RoleInfoHeader";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import QuestionCard from "../../components/Cards/QuestionCard";
-import AIResponsePreview from "../../components/Cards/AIResponsePreview";
 import Drawer from "../../components/Drawer";
+import AIResponsePreview from "../../components/Cards/AIResponsePreview";
 import SkeletonLoader from "../../components/Loader/SkeletonLoader";
 
 function InterviewPrep() {
