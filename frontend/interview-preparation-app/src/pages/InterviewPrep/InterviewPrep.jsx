@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import { AnimatePresence, motion } from "framer-motion";
-import { LuCircleAlert } from "react-icons/lu";
+import { LuCircleAlert, LuListCollapse } from "react-icons/lu";
 import Loader from "../../components/Loader/Loader";
 import { toast } from "react-hot-toast";
 import DashboardLayout from "../../components/Layout/DashboardLayout";
@@ -22,6 +22,7 @@ function InterviewPrep() {
   const [openLeanMoreDrawer, setOpenLeanMoreDrawer] = useState(false);
   const [explanation, setExplanation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isUpdateLoader, setIsUpdateLoader] = useState(false);
 
   // Fetch session data
   const fetchSessionDetailsById = async () => {
@@ -82,6 +83,33 @@ function InterviewPrep() {
     }
   };
 
+  const uploadMoreQuestions = async () => {
+    try {
+      setIsUpdateLoader(true);
+      console.log(sessionData);
+
+      const aiResponse = await axiosInstance.post(
+        API_PATHS.AI.GENERATE_QUESTIONS,
+        {
+          role: sessionData?.role,
+          experience: sessionData?.experience,
+          topicsToFocus: sessionData?.topicsToFocus,
+          numberOfQuestions: 2,
+        }
+      );
+
+      console.log(aiResponse.data);
+    } catch (error) {
+      if (error.response?.data?.message) {
+        setErrorMsg(error.response.data.message);
+      } else {
+        setErrorMsg("Something went wrong. Please try again later!");
+      }
+    } finally {
+      setIsUpdateLoader(false);
+    }
+  };
+
   useEffect(() => {
     if (sessionId) {
       fetchSessionDetailsById();
@@ -129,15 +157,36 @@ function InterviewPrep() {
                   layout
                   layoutId={`question-${data._id || index}`}
                 >
-                  <QuestionCard
-                    question={data?.question}
-                    answer={data?.answer}
-                    onLearnMore={() =>
-                      generateConceptExplanation(data.question)
-                    }
-                    isPinned={data?.isPinned}
-                    onTogglePin={() => toggleQuestionPinStatus(data._id)}
-                  />
+                  <>
+                    <QuestionCard
+                      question={data?.question}
+                      answer={data?.answer}
+                      onLearnMore={() =>
+                        generateConceptExplanation(data.question)
+                      }
+                      isPinned={data?.isPinned}
+                      onTogglePin={() => toggleQuestionPinStatus(data._id)}
+                    />
+
+                    {!isLoading &&
+                      sessionData?.questions?.length == index + 1 && (
+                        <div className="flex items-center justify-center mt-5">
+                          <button
+                            className="flex items-center gap-3 text-sm text-white font-medium bg-black px-5 py-2 mr-2 rounded text-nowrap cursor-pointer"
+                            disabled={isLoading || isUpdateLoader}
+                            type="button"
+                            onClick={uploadMoreQuestions}
+                          >
+                            {isUpdateLoader ? (
+                              <Loader className="" />
+                            ) : (
+                              <LuListCollapse className="text-lg" />
+                            )}
+                            Load More
+                          </button>
+                        </div>
+                      )}
+                  </>
                 </motion.div>
               ))}
             </AnimatePresence>
