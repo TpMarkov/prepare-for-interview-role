@@ -57,7 +57,7 @@ const QuestionCard = ({
             </button>
 
             <button
-              className="flex items-center gap-1 text-xs text-cyan-800 font-medium bg-cyan-50 px-3 py-1 rounded border border-cyan-50 hover:border-cyan-200"
+              className="flex items-center gap-1 text-xs text-cyan-800 font-medium bg-cyan-50 px-3 py-1 rounded border border-cyan-50 hover:border-cyan-200 hover:cursor-pointer"
               onClick={() => {
                 setIsExpanded(true);
                 onLearnMore?.();
