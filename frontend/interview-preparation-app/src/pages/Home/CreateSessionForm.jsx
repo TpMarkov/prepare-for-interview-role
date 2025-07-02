@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import Input from "../../components/Inputs/Input";
-// import { FaSpinner } from "react-icons/fa";
 import Loader from "../../components/Loader/Loader";
 
 const CreateSessionForm = () => {
@@ -27,13 +26,27 @@ const CreateSessionForm = () => {
     e.preventDefault();
 
     setIsLoading(true);
+    setError(null);
     try {
       const { role, experience, topicsToFocus, description } = formData;
 
       if (!role || !experience || !topicsToFocus || !description) {
         setError("Please fill all the required fields.");
+        setIsLoading(false);
         return;
       }
+
+      // Log token for debugging
+      const token = localStorage.getItem("token");
+      console.log("Token in localStorage:", token);
+
+      // Log request body
+      console.log("Sending to AI:", {
+        role,
+        experience,
+        topicsToFocus,
+        numberOfQuestions: 10,
+      });
       const aiResponse = await axiosInstance.post(
         API_PATHS.AI.GENERATE_QUESTIONS,
         {
@@ -43,23 +56,39 @@ const CreateSessionForm = () => {
           numberOfQuestions: 10,
         }
       );
+      console.log("AI Response:", aiResponse.data);
 
       const generatedQuestions = aiResponse.data;
 
+      // Log request body for session creation
+      console.log("Sending to SESSION.CREATE:", {
+        ...formData,
+        questions: generatedQuestions,
+      });
       const response = await axiosInstance.post(API_PATHS.SESSION.CREATE, {
         ...formData,
         questions: generatedQuestions,
       });
+      console.log("Session Create Response:", response.data);
 
       if (response.data?.session?._id) {
         navigate(`/interview-prep/${response.data?.session?._id}`);
-        setIsLoading(false);
       }
     } catch (error) {
-      if (error.response && error.response.data.message) {
-        setError(error.response.data.message);
+      // Log the full error object
+      console.error("Error creating session:", error);
+      if (error.response) {
+        console.error("Error response:", error.response);
+        setError(
+          error.response.data?.message || JSON.stringify(error.response.data)
+        );
+      } else if (error.request) {
+        console.error("Error request:", error.request);
+        setError("No response from server. Check your network.");
       } else {
-        setError("Something went wrong. Please try again later.");
+        setError(
+          error.message || "Something went wrong. Please try again later."
+        );
       }
     } finally {
       setIsLoading(false);
@@ -97,7 +126,7 @@ const CreateSessionForm = () => {
           onChange={({ target }) => handleChange("topicsToFocus", target.value)}
           label="Topics To Focus On"
           type="text"
-          placeholder="(Comma-separeted, e.g., React, JavaScript, HTML ...)"
+          placeholder="(Comma-separated, e.g., React, JavaScript, HTML ...)"
         />
 
         <Input
