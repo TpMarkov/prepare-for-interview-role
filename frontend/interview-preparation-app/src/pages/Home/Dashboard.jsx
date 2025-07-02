@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { LuPlus } from "react-icons/lu";
 import { CARD_BG } from "../../utils/data";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { API_PATHS } from "../../utils/apiPaths";
 import axiosInstance from "../../utils/axiosInstance";
@@ -11,9 +11,11 @@ import moment from "moment";
 import SumaryCard from "../../components/Cards/SumaryCard";
 import Modal from "../../components/Modal";
 import CreateSessionForm from "./CreateSessionForm";
+import DeleteAlertContent from "../../components/DeleteAlertContent";
 
 function Dashboard() {
   const navigate = useNavigate();
+  const { sessionId } = useParams();
 
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const [sessions, setSessions] = useState([]);
@@ -33,7 +35,20 @@ function Dashboard() {
     }
   };
 
-  const deleteSession = async (sessionData) => {};
+  const deleteSession = async (sessionData) => {
+    try {
+      await axiosInstance.delete(API_PATHS.SESSION.DELETE(sessionData?._id));
+
+      toast.success("Session Deleted Succssessfully!");
+      setOpenDleteAlert({
+        open: false,
+        content: null,
+      });
+      fetchAllSessions();
+    } catch (error) {
+      console.error(`Error:`, error);
+    }
+  };
 
   useEffect(() => {
     fetchAllSessions();
@@ -80,6 +95,21 @@ function Dashboard() {
       >
         <div>
           <CreateSessionForm />
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={openDeleteAlert?.open}
+        onClose={() => {
+          setOpenDleteAlert({ open: false, data: null });
+        }}
+        title="Delete Alert"
+      >
+        <div className="w-[30vw]">
+          <DeleteAlertContent
+            content="Are you sure you want to delete this session details"
+            onDelete={() => deleteSession(openDeleteAlert.data)}
+          />
         </div>
       </Modal>
     </DashboardLayout>
