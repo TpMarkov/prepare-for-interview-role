@@ -45,7 +45,7 @@ const CreateSessionForm = () => {
         role,
         experience,
         topicsToFocus,
-        numberOfQuestions: 10,
+        numberOfQuestions: 5,
       });
       const aiResponse = await axiosInstance.post(
         API_PATHS.AI.GENERATE_QUESTIONS,
@@ -53,7 +53,7 @@ const CreateSessionForm = () => {
           role,
           experience,
           topicsToFocus,
-          numberOfQuestions: 10,
+          numberOfQuestions: 5,
         }
       );
       console.log("AI Response:", aiResponse.data);

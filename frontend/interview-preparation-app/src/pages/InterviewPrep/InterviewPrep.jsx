@@ -94,11 +94,25 @@ function InterviewPrep() {
           role: sessionData?.role,
           experience: sessionData?.experience,
           topicsToFocus: sessionData?.topicsToFocus,
-          numberOfQuestions: 2,
+          numberOfQuestions: 3,
         }
       );
 
-      console.log(aiResponse.data);
+      const uploadedQuestions = aiResponse.data;
+      console.log(uploadedQuestions);
+
+      const response = await axiosInstance.post(
+        API_PATHS.QUESTION.ADD_TO_SESSION,
+        {
+          sessionId,
+          questions: uploadedQuestions,
+        }
+      );
+
+      if (response.data) {
+        toast.success("5 Questions successfully added to this session.");
+        fetchSessionDetailsById();
+      }
     } catch (error) {
       if (error.response?.data?.message) {
         setErrorMsg(error.response.data.message);
