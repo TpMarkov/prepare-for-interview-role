@@ -28,9 +28,29 @@ Built with React, Node.js, Express, and MongoDB.
 
 ## 📸 Screenshots
 
-> ⚠️ Replace the placeholders with your real image file names.
-> <img src="https://i.ibb.co/H9DV5h0/homepage.png" alt="Homepage" width="100%" /> > <img src="https://i.ibb.co/dsRmkhX/question-detail.png" alt="Question Detail" width="100%" /> > <img src="https://i.ibb.co/JZPxCwT/add-question.png" alt="Add Question" width="100%" /> > <img src="https://i.ibb.co/d0SsvpY/session-history.png" alt="Session History" width="100%" /> > <img src="https://i.ibb.co/XZDD5rf/create-session.png" alt="Create Session" width="100%" /> > <img src="https://i.ibb.co/4nKg5DB/auth.png" alt="Authentication" width="100%" />
+<p align="center">
+  <img src="https://i.ibb.co/H9DV5h0/homepage.png" alt="Homepage" width="800" />
+</p>
 
+<p align="center">
+  <img src="https://i.ibb.co/dsRmkhX/question-detail.png" alt="Question Detail" width="800" />
+</p>
+
+<p align="center">
+  <img src="https://i.ibb.co/JZPxCwT/add-question.png" alt="Add Question" width="800" />
+</p>
+
+<p align="center">
+  <img src="https://i.ibb.co/d0SsvpY/session-history.png" alt="Session History" width="800" />
+</p>
+
+<p align="center">
+  <img src="https://i.ibb.co/XZDD5rf/create-session.png" alt="Create Session" width="800" />
+</p>
+
+<p align="center">
+  <img src="https://i.ibb.co/4nKg5DB/auth.png" alt="Authentication" width="800" />
+</p>
 ---
 
 ## 🧪 How to Run Locally
