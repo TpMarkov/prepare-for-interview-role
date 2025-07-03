@@ -29,11 +29,7 @@ const AIResponsePreview = ({ content }) => {
           remarkPlugins={[remarkGfm]}
           components={{
             p({ children }) {
-              return (
-                <p className="mb-4 leading-6 text-gray-800">
-                  {highlightKeywords(children.toString())}
-                </p>
-              );
+              return <p className="mb-4 leading-6 text-gray-800">{children}</p>;
             },
             strong({ children }) {
               return (
