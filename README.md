@@ -29,30 +29,30 @@ Built with React, Node.js, Express, and MongoDB.
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="./frontend/interview-preparation-app/src/assets/7.png" alt="Add Question" width="500" />
+  <img src="./frontend/interview-preparation-app/src/assets/7.png" alt="Add Question" width="700" />
 </p>
 <p align="center">
-  <img src="./frontend/interview-preparation-app/src/assets/1.png" alt="Homepage" width="500" />
-</p>
-
-<p align="center">
-  <img src="./frontend/interview-preparation-app/src/assets/2.png" alt="Question Detail" width="500" />
+  <img src="./frontend/interview-preparation-app/src/assets/1.png" alt="Homepage" width="700" />
 </p>
 
 <p align="center">
-  <img src="./frontend/interview-preparation-app/src/assets/3.png" alt="Add Question" width="500" />
+  <img src="./frontend/interview-preparation-app/src/assets/2.png" alt="Question Detail" width="700" />
 </p>
 
 <p align="center">
-  <img src="./frontend/interview-preparation-app/src/assets/4.png" alt="Add Question" width="500" />
+  <img src="./frontend/interview-preparation-app/src/assets/3.png" alt="Add Question" width="700" />
 </p>
 
 <p align="center">
-  <img src="./frontend/interview-preparation-app/src/assets/5.png" alt="Add Question" width="500" />
+  <img src="./frontend/interview-preparation-app/src/assets/4.png" alt="Add Question" width="700" />
 </p>
 
 <p align="center">
-  <img src="./frontend/interview-preparation-app/src/assets/6.png" alt="Add Question" width="500" />
+  <img src="./frontend/interview-preparation-app/src/assets/5.png" alt="Add Question" width="700" />
+</p>
+
+<p align="center">
+  <img src="./frontend/interview-preparation-app/src/assets/6.png" alt="Add Question" width="700" />
 </p>
 ---
 
