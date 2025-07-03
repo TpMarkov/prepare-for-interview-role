@@ -44,5 +44,5 @@ Built with React, Node.js, Express, and MongoDB.
 1. Clone the repo:
 
    ```bash
-   git clone https://github.com/YOUR-USERNAME/InterviewMaster.git
+   git clone https://github.com/TpMarkov/prepare-for-interview-role.git
    ```
