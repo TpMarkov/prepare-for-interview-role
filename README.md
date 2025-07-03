@@ -71,16 +71,10 @@ Built with React, Node.js, Express, and MongoDB.
    - open new terminal
    - in the terminal type
 
-   ````bash
+   ```bash
      cd /frontend/interview-preparation-app
-     ```
+      npm install
+      npm run dev
+   ```
 
-    - type in the terminal npm install - to install all the dependencies
-    - type in the terminal npm run dev
-
-    You're readdy to go.
-   ````
-
-```
-
-```
+   You're ready to go.
