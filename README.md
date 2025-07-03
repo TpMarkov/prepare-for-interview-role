@@ -60,8 +60,11 @@ Built with React, Node.js, Express, and MongoDB.
    - paste this code in the .env file
 
    PORT=8000
+
    MONGO_URI=mongodb+srv://markowcvetan:kfyXT1bPMDFcXLh4@interviewprepai.j07ksax.mongodb.net/?retryWrites=true&w=majority&appName=InterviewPrepAI
+
    JWT_SECRET=4cbc602a33cd8442b1f6cbe91707834eb7f49cf807303ea72df14108691605777666c9c3e6b15cc7bb4274b23f3d6c7a5c8de24399a20e285b7ca945e6707a38
+
    GEMINI_API_KEY=AIzaSyAKW8XlkcJ5ZNyp8MecyS9OdDYwObSsAeE
 
    - save the file and type npm run dev in to the console
