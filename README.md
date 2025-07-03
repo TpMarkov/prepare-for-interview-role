@@ -49,30 +49,38 @@ Built with React, Node.js, Express, and MongoDB.
 
 2. Navigate to backend
 
-   ```bash
    - open new terminal
+
+   ```bash
    - cd /backend
+   ```
+
    - npm install
    - create new file and name it .env
    - paste this code in the .env file
 
-    PORT=8000
-    MONGO_URI=mongodb+srv://markowcvetan:kfyXT1bPMDFcXLh4@interviewprepai.j07ksax.mongodb.net/?retryWrites=true&w=majority&appName=InterviewPrepAI
-    JWT_SECRET=4cbc602a33cd8442b1f6cbe91707834eb7f49cf807303ea72df14108691605777666c9c3e6b15cc7bb4274b23f3d6c7a5c8de24399a20e285b7ca945e6707a38
-    GEMINI_API_KEY=AIzaSyAKW8XlkcJ5ZNyp8MecyS9OdDYwObSsAeE
+   PORT=8000
+   MONGO_URI=mongodb+srv://markowcvetan:kfyXT1bPMDFcXLh4@interviewprepai.j07ksax.mongodb.net/?retryWrites=true&w=majority&appName=InterviewPrepAI
+   JWT_SECRET=4cbc602a33cd8442b1f6cbe91707834eb7f49cf807303ea72df14108691605777666c9c3e6b15cc7bb4274b23f3d6c7a5c8de24399a20e285b7ca945e6707a38
+   GEMINI_API_KEY=AIzaSyAKW8XlkcJ5ZNyp8MecyS9OdDYwObSsAeE
 
-    - save the file and type npm run dev  in to the console
-   ```
+   - save the file and type npm run dev in to the console
 
 3. Navigate to /frontend/interview-preparation-app
 
-```bash
-    - open new terminal
-    - in the terminal type cd /frontend/interview-preparation-app
+   - open new terminal
+   - in the terminal type
+
+   ````bash
+     cd /frontend/interview-preparation-app
+     ```
+
     - type in the terminal npm install - to install all the dependencies
     - type in the terminal npm run dev
 
     You're readdy to go.
+   ````
 
+```
 
 ```
