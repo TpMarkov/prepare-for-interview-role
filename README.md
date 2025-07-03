@@ -26,11 +26,19 @@ Built with React, Node.js, Express, and MongoDB.
 
 ---
 
+https://ibb.co/H9DV5h0
+https://ibb.co/dsRmkhX9
+https://ibb.co/JZPxCwT
+https://ibb.co/d0SsvpYN
+https://ibb.co/XZDD5rfr
+https://ibb.co/4nKg5DBN
+
 ## 📸 Screenshots
 
 > ⚠️ Replace the placeholders with your real image file names.
 
-<img src="./screenshots/homepage.png" alt="Homepage" width="100%" />
+<img src="https://ibb.co/QjrY5y68
+" alt="Homepage" width="100%" />
 <img src="./screenshots/create-session.png" alt="Create Session" width="100%" />
 <img src="./screenshots/question-detail.png" alt="Question Detail" width="100%" />
 <img src="./screenshots/add-question.png" alt="Add Question" width="100%" />
