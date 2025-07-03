@@ -52,7 +52,7 @@ Built with React, Node.js, Express, and MongoDB.
    - open new terminal
 
    ```bash
-   - cd /backend
+   cd /backend
    ```
 
    - npm install
@@ -72,9 +72,9 @@ Built with React, Node.js, Express, and MongoDB.
    - in the terminal type
 
    ```bash
-     cd /frontend/interview-preparation-app
-      npm install
-      npm run dev
+   cd /frontend/interview-preparation-app
+   npm install
+   npm run dev
    ```
 
    You're ready to go.
