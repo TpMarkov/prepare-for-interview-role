@@ -29,6 +29,9 @@ Built with React, Node.js, Express, and MongoDB.
 ## 📸 Screenshots
 
 <p align="center">
+  <img src="./frontend/interview-preparation-app/src/assets/7.png" alt="Add Question" width="800" />
+</p>
+<p align="center">
   <img src="./frontend/interview-preparation-app/src/assets/1.png" alt="Homepage" width="800" />
 </p>
 
@@ -37,19 +40,19 @@ Built with React, Node.js, Express, and MongoDB.
 </p>
 
 <p align="center">
-  <img src="https://i.ibb.co/JZPxCwT/add-question.png" alt="Add Question" width="800" />
+  <img src="./frontend/interview-preparation-app/src/assets/3.png" alt="Add Question" width="800" />
 </p>
 
 <p align="center">
-  <img src="https://i.ibb.co/d0SsvpY/session-history.png" alt="Session History" width="800" />
+  <img src="./frontend/interview-preparation-app/src/assets/4.png" alt="Add Question" width="800" />
 </p>
 
 <p align="center">
-  <img src="https://i.ibb.co/XZDD5rf/create-session.png" alt="Create Session" width="800" />
+  <img src="./frontend/interview-preparation-app/src/assets/5.png" alt="Add Question" width="800" />
 </p>
 
 <p align="center">
-  <img src="https://i.ibb.co/4nKg5DB/auth.png" alt="Authentication" width="800" />
+  <img src="./frontend/interview-preparation-app/src/assets/6.png" alt="Add Question" width="800" />
 </p>
 ---
 
