@@ -28,29 +28,21 @@ Built with React, Node.js, Express, and MongoDB.
 
 ## 📸 Screenshots
 
-<p align="center">
-  <img src="https://i.ibb.co/H9DV5h0/homepage.png" alt="Homepage" width="800" />
-</p>
-
-<p align="center">
-  <img src="https://i.ibb.co/dsRmkhX/question-detail.png" alt="Question Detail" width="800" />
-</p>
-
-<p align="center">
-  <img src="https://i.ibb.co/JZPxCwT/add-question.png" alt="Add Question" width="800" />
-</p>
-
-<p align="center">
-  <img src="https://i.ibb.co/d0SsvpY/session-history.png" alt="Session History" width="800" />
-</p>
-
-<p align="center">
-  <img src="https://i.ibb.co/XZDD5rf/create-session.png" alt="Create Session" width="800" />
-</p>
-
-<p align="center">
-  <img src="https://i.ibb.co/4nKg5DB/auth.png" alt="Authentication" width="800" />
-</p>
+<table>
+  <tr>
+    <td><img src="https://i.ibb.co/QjrY5y6/1.png" alt="Screenshot 1" width="300" height="200" /></td>
+    <td><img src="https://i.ibb.co/H9DV5h0/homepage.png" alt="Homepage" width="300" height="200" /></td>
+    <td><img src="https://i.ibb.co/dsRmkhX/question-detail.png" alt="Question Detail" width="300" height="200" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://i.ibb.co/JZPxCwT/add-question.png" alt="Add Question" width="300" height="200" /></td>
+    <td><img src="https://i.ibb.co/d0SsvpY/session-history.png" alt="Session History" width="300" height="200" /></td>
+    <td><img src="https://i.ibb.co/XZDD5rf/create-session.png" alt="Create Session" width="300" height="200" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://i.ibb.co/4nKg5DB/auth.png" alt="Authentication" width="300" height="200" /></td>
+  </tr>
+</table>
 ---
 
 ## 🧪 How to Run Locally
