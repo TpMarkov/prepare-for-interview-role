@@ -7,20 +7,20 @@ import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 const AIResponsePreview = ({ content }) => {
   if (!content) return null;
 
-  // Highlight keywords in paragraphs
-  const highlightKeywords = (text) => {
-    const keywords = ["important", "note", "warning", "tip"];
-    const regex = new RegExp(`\\b(${keywords.join("|")})\\b`, "gi");
-    return text.split(regex).map((part, i) =>
-      keywords.includes(part.toLowerCase()) ? (
-        <span key={i} className="font-bold text-red-600">
-          {part}
-        </span>
-      ) : (
-        part
-      )
-    );
-  };
+  // // Highlight keywords in paragraphs
+  // const highlightKeywords = (text) => {
+  //   const keywords = ["important", "note", "warning", "tip"];
+  //   const regex = new RegExp(`\\b(${keywords.join("|")})\\b`, "gi");
+  //   return text.split(regex).map((part, i) =>
+  //     keywords.includes(part.toLowerCase()) ? (
+  //       <span key={i} className="font-bold text-red-600">
+  //         {part}
+  //       </span>
+  //     ) : (
+  //       part
+  //     )
+  //   );
+  // };
 
   return (
     <div className="max-w-4xl mx-auto">
