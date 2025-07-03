@@ -37,8 +37,7 @@ https://ibb.co/4nKg5DBN
 
 > ⚠️ Replace the placeholders with your real image file names.
 
-<img src="https://ibb.co/QjrY5y68
-" alt="Homepage" width="100%" />
+<img src="https://ibb.co/H9DV5h0" alt="Homepage" width="100%" />
 <img src="./screenshots/create-session.png" alt="Create Session" width="100%" />
 <img src="./screenshots/question-detail.png" alt="Question Detail" width="100%" />
 <img src="./screenshots/add-question.png" alt="Add Question" width="100%" />
